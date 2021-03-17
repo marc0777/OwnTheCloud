@@ -50,3 +50,9 @@ clicca oppure attendi che compaia scritto "Reboot Now" e clicca
 
 clicca enter, finito
 
+# Primo accesso
+
+![image-20210318003628132](https://raw.githubusercontent.com/marc0777/OwnTheCloud/main/Lezione%201.assets/image-20210318003628132.png)
+
+![image-20210318003659060](https://raw.githubusercontent.com/marc0777/OwnTheCloud/main/Lezione%201.assets/image-20210318003659060.png)
+

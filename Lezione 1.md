@@ -41,3 +41,10 @@ conferma di quello che gli avete detto di fare, done e poi continue
 ![image-20210318001025242](Lezione 1.assets/image-20210318001025242.png)
 
 ![image-20210318001040610](Lezione 1.assets/image-20210318001040610.png)
+![image-20210318001637031](Lezione 1.assets/image-20210318001637031.png)
+
+clicca oppure attendi che compaia scritto "Reboot Now" e clicca
+
+![image-20210318002146295](Lezione 1.assets/image-20210318002146295.png)
+
+clicca enter, finito

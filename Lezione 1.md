@@ -1,0 +1,16 @@
+# Creazione VM
+
+![image-20210317234340704](Lezione 1.assets/image-20210317234340704.png)
+
+![image-20210317234424214](Lezione 1.assets/image-20210317234424214.png)
+
+![image-20210317234453006](Lezione 1.assets/image-20210317234453006.png)
+
+![image-20210317234509203](Lezione 1.assets/image-20210317234509203.png)
+
+![image-20210317234542377](Lezione 1.assets/image-20210317234542377.png)
+
+![image-20210317234558678](Lezione 1.assets/image-20210317234558678.png)
+
+![image-20210317234648912](Lezione 1.assets/image-20210317234648912.png)
+

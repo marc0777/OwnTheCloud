@@ -10,13 +10,13 @@ Se abbiamo una password impostata sul nostro utente allora la prima volta che us
 
 Nella maggior parte dei sistemi Unix è disponibile un manuale integrato, che documenta l'utilizzo di tutti i comandi presenti nel sistema. Possiamo accederci usando `man`
 
-```shell
+```bash
 man <manual_page>
 ```
 
 La pagina di manuale può essere un qualunque comando di cui vogliamo, `man` incluso
 
-```shell
+```bash
 man man
 ```
 
@@ -32,13 +32,13 @@ sudo poweroff
 
 Questo è in realtà una scorciatoia per il più complesso comando `shutdown`. Per ottenere lo stesso risultato dovremmo scrivere
 
-```shell
+```bash
 sudo shutdown -h now
 ```
 
 Possiamo riavviare il sistema utilizzando invece
 
-```shell
+```bash
 sudo restart
 ```
 
@@ -48,13 +48,13 @@ Su Ubuntu, e più in generale sui sistemi basati su Debian, il gestore dei pacch
 
 Possiamo controllare il contenuto dei repository usando il comando l'opzione `update`
 
-```shell
+```bash
 sudo apt update
 ```
 
 Nel caso `apt` trovi degli aggiornamenti possiamo installarli eseguendo un `upgrade`
 
-```shell
+```bash
 sudo apt upgrade
 ```
 
@@ -62,7 +62,7 @@ Ci verrà poi chiesta conferma, a cui possiamo rispondere digitando `y` e poi pr
 
 In modo simile, possiamo usare l'opzione `install` seguita dal nome del pacchetto che vogliamo installare per installarlo
 
-```shell
+```bash
 sudo apt install <package>
 ```
 
@@ -70,25 +70,25 @@ sudo apt install <package>
 
 Il comando `ls` ci permette di elencare tutti i file presenti in una cartella
 
-```shell
+```bash
 ls
 ```
 
 Ci mostrerà tutti i file e le cartelle presenti nella cartella in cui ci troviamo. Possiamo spostarci nelle cartelle usando il comando `cd`
 
-```shell
+```bash
 cd <folder_path>
 ```
 
 Al comando `cd` possiamo sia passare il semplice nome della cartella, ma possiamo anche accedere a sottocartelle separando con `/`. Se non viene passato nessun percorso allora ci porterà nella cartella del nostro utente. Alternativamente per andare nella cartella del proprio utente
 
-```shell
+```bash
 cd /home/<user>
 ```
 
 Una scorciatoia per indicare la cartella dell'utente corrente è il carattere `~`, che possiamo usare in tutti i comandi e non solo in `cd`
 
-```shell
+```bash
 cd ~
 ```
 
@@ -96,19 +96,19 @@ Altre scorciatoie utili sono `.` che indica la cartella corrente e `..` che indi
 
 Possiamo elencare i file in una cartella utilizzando 
 
-```shell
+```bash
 ls <folder_path>
 ```
 
 Il comando `ls` ha molte opzioni utili: per esempio aggiungendo `-a` ci mostrerà anche i file nascosti
 
-```shell
+```bash
 ls -a <folder_path>
 ```
 
 Per ricevere più informazioni sui file possiamo usare l'opzione `-l`, ed abbinarla a `-h` per trasformare le unità in modo che siano più leggibili (`-h` indica human readable)
 
-```shell
+```bash
 ls -l -h <folder_path>
 ```
 
@@ -116,7 +116,7 @@ ls -l -h <folder_path>
 
 Una volta localizzato il file che ci interessa con `ls` e `cd` possiamo visualizzarne il contenuto con il comando `cat`
 
-```shell
+```bash
 cat <file_path>
 ```
 
@@ -124,7 +124,7 @@ Nel percorso possiamo usare tutte le scorciatoie che abbiamo visto precedentemen
 
 Per modificare un file esistono diversi editor, i più popolari sono `vi`, `emacs` e `nano`. I primi due sono i più vecchi (1976!) ed avanzati, mentre l'ultimo è più recente ed intuitivo da utilizzare. Possiamo modificare un file con `nano` scrivendo
 
-```shell
+```bash
 nano <file_path>
 ```
 
@@ -138,7 +138,7 @@ Nel caso di file di sistema sarà necessario anteporre il comando `sudo` a `nano
 
 Il modo più semplice per verificare se abbiamo accesso alla rete è utilizzando il comando `ping`, che serve a misurare il tempo che impiega uno specifico tipo di pacchetto (chiamato ICMP) a raggiungere un altro dispositivo nella rete e tornare indietro. Questo ci permette di capire se la comunicazione tra i due dispositivi funziona ed anche se questa è stabile.
 
-```shell
+```bash
 ping <destination>
 ```
 
@@ -146,7 +146,7 @@ La destinazione può essere sia un nome di dominio (e.g. www.example.org) che un
 
 Per trovare l'indirizzo del nostro dispositivo (o macchina virtuale) nella rete possiamo usare il comando `ip`
 
-```shell
+```bash
 ip addr
 ```
 
@@ -155,13 +155,13 @@ Nell'output di questo comando l'indirizzo IP sarà preceduto dalla scritta `inet
 
 Possiamo trovare le stesse informazioni in modo meglio organizzato con il comando `ifconfig`, che però non sempre è presente e potrebbe essere necessario installarlo.
 
-```shell
+```bash
 ifconfig
 ```
 
 A volte può servirci sapere l'indirizzo IP corrispondente ad un nome di dominio. Per ottenerlo dobbiamo fare una richiesta DNS, ed il modo più semplice è tramite il comando `nslookup`
 
-```shell
+```bash
 nslookup <domain_name> [<dns_server>]
 ```
 
@@ -169,7 +169,7 @@ Se non viene specificato un server DNS tramite il suo indirizzo IP il comando ut
 
 Per ricevere informazioni più dettagliate su una specifica interrogazione DNS possiamo utilizzare il comando `dig`
 
-```shell
+```bash
 dig [@<dns_server>] <domain_name>
 ```
 
@@ -177,13 +177,13 @@ dig [@<dns_server>] <domain_name>
 
 Il modo più semplice per scaricare un file da internet è utilizzando il comando `wget`
 
-```shell
+```bash
 wget <file_url>
 ```
 
 Il file verrà salvato nella cartella corrente. invece possiamo stampare il contenuto del file a schermo utilizzando `curl`
 
-```shell
+```bash
 curl <file_url>
 ```
 
@@ -197,7 +197,7 @@ Su Bash, la shell di Linux, sono presenti degli operatori per manipolare l'outpu
 
 L'operatore pipe, indicato con il carattere `|`, serve per reindirizzare l'output di un comando all'input di un altro comando. Pensiamo ad esempio di voler leggere un file molto lungo: possiamo utilizzare `cat` ma il testo finirà poi fuori dallo schermo. Possiamo quindi combinare `cat` al comando `less`, che permette di navigare un testo tramite le frecce
 
-```shell
+```bash
 cat file | less
 ```
 
@@ -205,7 +205,7 @@ cat file | less
 
 Possiamo reindirizzare l'output di un comando ad un file utilizzando l'operatore di redirect, indicato con il simbolo `>`. 
 
-```shell
+```bash
 curl example.org > out.txt
 ```
 
@@ -213,7 +213,7 @@ Così facendo il contenuto del file presente nella pagina `example.org`  verrà 
 
 Se non vogliamo sovrascrivere ma piuttosto aggiungere alla fine del file possiamo invece utilizzare `>>`
 
-```shell
+```bash
 cat part2.txt >> part1.txt
 ```
 

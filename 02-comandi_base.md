@@ -205,14 +205,16 @@ cat file | less
 
 Possiamo reindirizzare l'output di un comando ad un file utilizzando l'operatore di redirect, indicato con il simbolo `>`. 
 
-`curl example.org > out.txt`
+```shell
+curl example.org > out.txt
+```
 
 Così facendo il contenuto del file presente nella pagina `example.org`  verrà scritto sul file `out.txt`. Se il file esiste già verrà sovrascritto, altrimenti verrà creato.
 
 Se non vogliamo sovrascrivere ma piuttosto aggiungere alla fine del file possiamo invece utilizzare `>>`
 
 ```shell
-cat part2.txt > part1.txt
+cat part2.txt >> part1.txt
 ```
 
 # Scorciatoie da tastiera

@@ -132,3 +132,115 @@ Si aprirà un'interfaccia dove possiamo muoverci e scrivere liberamente. Sono sc
 
 Nel caso di file di sistema sarà necessario anteporre il comando `sudo` a `nano` per poter salvare le modifiche.
 
+# Rete
+
+## Informazioni sulla rete
+
+Il modo più semplice per verificare se abbiamo accesso alla rete è utilizzando il comando `ping`, che serve a misurare il tempo che impiega uno specifico tipo di pacchetto (chiamato ICMP) a raggiungere un altro dispositivo nella rete e tornare indietro. Questo ci permette di capire se la comunicazione tra i due dispositivi funziona ed anche se questa è stabile.
+
+```shell
+ping <destination>
+```
+
+La destinazione può essere sia un nome di dominio (e.g. www.example.org) che un indirizzo IP (e.g. 127.0.0.1).
+
+Per trovare l'indirizzo del nostro dispositivo (o macchina virtuale) nella rete possiamo usare il comando `ip`
+
+```shell
+ip addr
+```
+
+Nell'output di questo comando l'indirizzo IP sarà preceduto dalla scritta `inet`, e `inet6` per l'indirizzo IPv6. Sono presenti diverse informazioni per ogni interfaccia ma soprattutto più interfacce: in genere quella che ci interessa ha un nome simile a `enp0s1` o `eth0`. 
+È sempre presente anche un'interfaccia di loopback, indicata con `lo` con (solitamente) indirizzo IP 127.0.0.1. Questo dispositivo è il modo con cui un dispositivo vede sé stesso.
+
+Possiamo trovare le stesse informazioni in modo meglio organizzato con il comando `ifconfig`, che però non sempre è presente e potrebbe essere necessario installarlo.
+
+```shell
+ifconfig
+```
+
+A volte può servirci sapere l'indirizzo IP corrispondente ad un nome di dominio. Per ottenerlo dobbiamo fare una richiesta DNS, ed il modo più semplice è tramite il comando `nslookup`
+
+```shell
+nslookup <domain_name> [<dns_server>]
+```
+
+Se non viene specificato un server DNS tramite il suo indirizzo IP il comando utilizzerà il server predefinito di sistema (solitamente quello indicato dal nostro operatore).
+
+Per ricevere informazioni più dettagliate su una specifica interrogazione DNS possiamo utilizzare il comando `dig`
+
+```shell
+dig [@<dns_server>] <domain_name>
+```
+
+## Scaricare file
+
+Il modo più semplice per scaricare un file da internet è utilizzando il comando `wget`
+
+```shell
+wget <file_url>
+```
+
+Il file verrà salvato nella cartella corrente. invece possiamo stampare il contenuto del file a schermo utilizzando `curl`
+
+```shell
+curl <file_url>
+```
+
+In realtà questi comandi sarebbero molto simili nell'utilizzo, ed entrambi possono svolgere entrambe le funzioni date le opportune opzioni, però per semplicità li useremo in questo modo.
+
+# Operatori
+
+Su Bash, la shell di Linux, sono presenti degli operatori per manipolare l'output dei comandi.
+
+## Pipe - `|`
+
+L'operatore pipe, indicato con il carattere `|`, serve per reindirizzare l'output di un comando all'input di un altro comando. Pensiamo ad esempio di voler leggere un file molto lungo: possiamo utilizzare `cat` ma il testo finirà poi fuori dallo schermo. Possiamo quindi combinare `cat` al comando `less`, che permette di navigare un testo tramite le frecce
+
+```shell
+cat file | less
+```
+
+## Redirect - `>`
+
+Possiamo reindirizzare l'output di un comando ad un file utilizzando l'operatore di redirect, indicato con il simbolo `>`. 
+
+`curl example.org > out.txt`
+
+Così facendo il contenuto del file presente nella pagina `example.org`  verrà scritto sul file `out.txt`. Se il file esiste già verrà sovrascritto, altrimenti verrà creato.
+
+Se non vogliamo sovrascrivere ma piuttosto aggiungere alla fine del file possiamo invece utilizzare `>>`
+
+```shell
+cat part2.txt > part1.txt
+```
+
+# Scorciatoie da tastiera
+
+L'utilizzo di alcune combinazioni da tastiera ci può semplificare molto la vita utilizzando la linea di comando. 
+
+## `Tab`
+
+In assoluto di maggiore importanza c'è il tasto `Tab`, che viene utilizzato per l'auto completamento. Premendolo anche solo dopo aver scritto una piccola porzione di un comando o del nome di un file potrebbe completarne una parte significante. Quando non ci sono abbastanza informazioni per finire l'auto completamente premendolo due volte ci verranno elencate tutte le opzioni: basterà allora aggiungere solitamente un carattere per poter completare di nuovo con `Tab`.
+
+## Gestire l'esecuzione di un programma
+
+### Chiusura
+
+A volte capita che un programma si blocchi, o che abbiamo sbagliato qualcosa e vogliamo interromperlo. Per farlo solitamente è sufficiente premere `Ctrl-C`. 
+
+Nel caso questo non funzioni probabilmente il programma ha bloccato questa scorciatoia e ne ha una propria: è questo il caso per l'editor di testo `vi` (`Esc` poi `:`, scrivere `q!`, poi `Enter`), il comando `screen` (`Ctrl-A` poi `D`), e l'interprete del linguaggio Python (scrivere `exit()`, poi `Enter`). 
+
+Per i programmi che svolgono operazioni sul sistema, come ad esempio `apt` o `systemctl` è meglio evitare di usare `Ctrl-C`, o si potrebbe lasciare il sistema in uno stato inconsistente, che può creare problemi.
+
+### Interruzione
+
+A volte può esserci utile interrompere solo temporaneamente l'esecuzione di un programma, magari perché dobbiamo controllare qualcos'altro. In questo caso possiamo premere `Ctrl-Z`, e ci troveremo di nuovo sulla linea di comando. Il programma non sarà però chiuso ma sospeso.
+
+Per riprendere normalmente l'esecuzione ci basterà utilizzare il comando `fg`, che farà tornare di nuovo il programma visibile. Se invece vogliamo che questo continui a lavorare in background (ad esempio un download) possiamo invece utilizzare `bg`.
+
+## Cronologia dei comandi
+
+La shell di Linux tiene una cronologia dei comandi che eseguiamo. Per consultarla basta semplicemente premere i tasti freccia su e giù della tastiera, e potremo vedere in ordine i comandi che abbiamo eseguito di recente.
+
+È possibile anche effettuare una ricerca nella cronologia dei comandi premendo `Ctrl-R`, e scrivendo una parte del comando che vogliamo trovare. Risulta molto utile soprattutto con comandi complessi di cui non sempre ci si ricorda tutte le opzioni.
